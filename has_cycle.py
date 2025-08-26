@@ -14,7 +14,10 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-        visited: set = {}  # O(1) membership test time. O(n) space
+        
+        # hash table implementation:
+        
+        visited: set = {}  # visited: set = set(). O(1) membership test time. O(n) space
         curr: Optional[ListNode] = head
         # while curr is not None > have not reached the tail
         while curr:
@@ -40,3 +43,4 @@ class Solution2(object):
             if slow == fast:
                 return True
         return False
+
