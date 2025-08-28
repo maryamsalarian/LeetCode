@@ -21,3 +21,12 @@ class Solution(object):
         return candid
 
         # hashmap solution:
+
+        target = len(nums) / 2
+        hashmap = defaultdict(int)
+        for num in nums:  # count all the elements in the array
+            hashmap[num] += 1
+        for key, count in hashmap:
+            if count > target:
+                return key
+        return 0  # if no majority element found
