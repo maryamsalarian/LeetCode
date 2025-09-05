@@ -7,7 +7,7 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-      
+        # hash table method:
         list_of_sums = set()
 
         def sum_of_squares(num):
@@ -22,6 +22,19 @@ class Solution(object):
             n = sum_of_squares(n)
 
         return n == 1
+
+    # floyd's tortoise and hare method:
+    
+    # requires the sum_of_sqaures function
+    # then:
+    slow = n
+    fast = sum_of_squares(n)
+    while fast != 1 and slow != fast:
+        slow = sum_of_squares(slow)
+        fast = sum_of_squares(fast)
+
+    return fast == 1
+
 
 
 if __name__ == "__main__":
