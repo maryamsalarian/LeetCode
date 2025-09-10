@@ -10,27 +10,27 @@ class Solution(object):
         """
         # intuitive hashmap, 1 hashmap
         
-        # s_chars = defaultdict(lambda: 1)
-        # for char in s:
-        #     if not char in s_chars:
-        #         s_chars[char]
-        #     else:
-        #         s_chars[char] += 1
-        # # by the end, s_chars includes all chars and their count for str s
-        # for char in t:
-        #     if char in s_chars:
-        #         s_chars[char] -= 1
-        #         if s_chars[char] < 0:
-        #             return False
-        #         else:
-        #             continue
-        #     else:
-        #         return False
-        # # if by then, there are any key:value pair left with value > 0, means that all chars were not matchec > not anagram
-        # for char in s_chars:
-        #     if s_chars[char] != 0:
-        #         return False
-        # # return True
+        s_chars = defaultdict(lambda: 1)
+        for char in s:
+            if not char in s_chars:
+                s_chars[char]
+            else:
+                s_chars[char] += 1
+        # by the end, s_chars includes all chars and their count for str s
+        for char in t:
+            if char in s_chars:
+                s_chars[char] -= 1
+                if s_chars[char] < 0:
+                    return False
+                else:
+                    continue
+            else:
+                return False
+        # if by then, there are any key:value pair left with value > 0, means that all chars were not matchec > not anagram
+        for char in s_chars:
+            if s_chars[char] != 0:
+                return False
+        # return True
 
         # intuitive hashmap, 2 hashmaps
 
@@ -68,3 +68,17 @@ class Solution(object):
             s_chars[s[i]] = 1 + s_chars.get(s[i], 0)
             t_chars[t[i]] = 1 + t_chars.get(t[i], 0)
         # now both hashmaps are populated, continue with the last for loop to compare them
+
+        # method 3, python counter:
+        # DS like hashmap with automatic counting property
+        return Counter(s) == Counter(t)
+
+        # method 4:
+        # compare the sorted order of both strings
+        # O(good sorting) = n logn
+        # O(worse sorting) = n^2
+        # s_sorted = s.sort() # in place. ONLY FOR LISTS. NOT STRINS. STRINGS ARE IMMUTABLE.
+        t_sorted = sorted(t)  # creates new string. not in place
+        s_sorted = sorted(s)
+        return s_sorted == t_sorted
+
