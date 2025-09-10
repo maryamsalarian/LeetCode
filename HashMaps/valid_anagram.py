@@ -57,3 +57,14 @@ class Solution(object):
             if s_chars[key] != t_chars[key]:
                 return False
         return True
+
+
+        # same method, 2 hashmaps
+        # Q: what if we are not allowed lambda and defaultdict?
+        # A: alternate implementation using normal sets
+        s_chars, t_chars = {}
+        # instead of iterating the strings by char, iterate by index since we know they are equal in size
+        for i in range(len(s)):
+            s_chars[s[i]] = 1 + s_chars.get(s[i], 0)
+            t_chars[t[i]] = 1 + t_chars.get(t[i], 0)
+        # now both hashmaps are populated, continue with the last for loop to compare them
