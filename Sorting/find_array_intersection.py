@@ -18,10 +18,11 @@ class Solution(object):
         # # method 2: using set intersection
         set1 = set(nums1)
         set2 = set(nums2)
-        res_set = set1.intersection(set2)
-        res = []
-        for element in res_set:
-            res.append(element)
+        return list(set1.intersection(set2))
+        # res_set = set1.intersection(set2)
+        # res = []
+        # for element in res_set:
+        #     res.append(element)
 
-        return res
+        # return res
 
