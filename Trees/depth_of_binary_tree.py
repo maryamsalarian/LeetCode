@@ -44,9 +44,20 @@ class Solution(object):
         # all levels have been processed, no unprocessed nodes left
         return depth
 
-        # recursive solution - DFS:
-        if not root:
-            return 0
 
-        return 1 + max(self.maxDepth(root.right), self.maxDepth(root.left))
+        # recursive solution - DFS:
+        # if not root:
+        #     return 0
+        # return 1 + max(self.maxDepth(root.right), self.maxDepth(root.left))
+
+
+        # recursion in C:
+        # include <stdlib.h>
+        # static int max(int a, int b) {
+        #     return (a > b) ? a : b;
+        # }
+        # int maxDepth(struct TreeNode* root) {
+        #     if (root == NULL) return 0;
+        #     return 1 + max(maxDepth(root->left), maxDepth(root->right));
+        # }
 
