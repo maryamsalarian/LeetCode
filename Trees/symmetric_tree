@@ -1,0 +1,28 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+from collections import deque
+
+class Solution(object):
+    def mirror(self, a, b):
+        if not a and not b:
+            return True
+        if not a or not b:
+            return False
+        if a.val != b.val:
+            return False
+        return self.mirror(a.left, b.right) and self.mirror(a.right, b.left)
+
+    def isSymmetric(self, root):
+        """
+        :type root: Optional[TreeNode]
+        :rtype: bool
+        """
+        # if no root -> true
+        # if no left and no right -> single node -> true
+        # compare the nodes that are SUPPOSED to be similar
+        return True if not root else self.mirror(root.left, root.right)
+            
