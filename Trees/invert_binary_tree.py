@@ -26,4 +26,12 @@ class Solution(object):
             if node.right:
                 my_list.append(node.right)
         return root
+
+        # or recursive:
+        # if not root:
+        #     return None
+        # root.left, root.right = root.right, root.left
+        # self.invertTree(root.left)
+        # self.invertTree(root.right)
+        # return root
         
